@@ -3,37 +3,52 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - "HMS" </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/HMSStyleSheet.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    <table id="MasterPageTable" width="100%">
+        <tr height="2%">
+            <td>
+                <div id="HMSHeaderStyle">
+                    <h1> SHAKTHI HOSPITALS</h1>
+                </div>
+            </td>
+            <td>
+            </td>
+        </tr>
+        </table>
+    <table height="98%" width="100%"  >
+        <tr height="97%">
+            <td width="15%" >
+                <ul style=" text-decoration: none;">
+                    <li style=" text-decoration: none;">@Html.ActionLink("Dashboard", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Doctors", "Index", "Doctor")</li>
+                    <li>@Html.ActionLink("Patients", "Index", "Doctor")</li>
+                    <li>@Html.ActionLink("Appointment", "Index", "Doctor")</li>
+                    <li>@Html.ActionLink("Ward Assignment", "Index", "Doctor")</li>
+                    <li>@Html.ActionLink("Billing", "Index", "Doctor")</li>
+                    <li>@Html.ActionLink("Blood Donor", "Index", "Doctor")</li>
+                    <li>@Html.ActionLink("Exams", "Index", "Doctor")</li>
                 </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+            </td>
+            <td width="85%">
+                @RenderBody()               
+            </td>
+        </tr>
+        <tr height="1%">
+            <td colspan="2" style="text-align: center;">
+                 <hr />
+                <footer style=" font-size: medium">
+                    <p>&copy; @DateTime.Now.Year - Copyrights by Rajarathi Ramanathan</p>
+                </footer>
+            </td>
+        </tr>
+    </table>
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

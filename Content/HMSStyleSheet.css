@@ -1,0 +1,43 @@
+﻿/* Custom Stylesheets for HOSPITAL MANAGEMENT SYSTEM - Author: Rajarathi Ramanathan*/
+
+#HMSHeaderStyle {
+    height: 100px;
+    background-image: linear-gradient(to left, rgba(255, 51, 51,0), rgba(255, 51, 51));
+}
+h1 {
+    text-shadow: 3px 3px 5px white;
+    color: black;
+    font-size: 60px;
+    text-align: center;
+    letter-spacing: 20px;
+}
+.navbarStyle {
+    font-size: large;
+    text-decoration-color: black;
+}
+ul {
+    display: inline;
+    margin: 0;
+    text-decoration-color: black;
+}
+ul li {
+        display: block;
+        padding: 20px;
+        font-size: x-large;
+        text-shadow: 0.5px 0.5px grey;
+        letter-spacing: 1px;
+        text-decoration: none;
+    }
+ul li:hover {
+            background: #ff9999;
+            border-radius: 50px;
+            text-decoration: none;
+        }
+#DisplayDetailsStyle {
+text-align:left;
+padding: 10px;
+margin: 0;
+font-size: medium;
+font-style: italic;
+font-weight: bold;
+}
