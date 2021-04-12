@@ -163,6 +163,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Hospital-HITN.jpg" />
     <Content Include="Models\HospitalDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HospitalDBModel.edmx</DependentUpon>
@@ -210,6 +211,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Doctor\Index.cshtml" />
     <Content Include="Views\Doctor\AddDoctor.cshtml" />
+    <Content Include="Views\Doctor\EditDoctor.cshtml" />
+    <Content Include="Views\Doctor\DeleteDoctor.cshtml" />
+    <Content Include="Views\Doctor\DetailsDoctor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

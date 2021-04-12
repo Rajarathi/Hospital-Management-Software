@@ -15,17 +15,15 @@ namespace Hospital_Management_Software.Models
     public partial class Doctor
     {
         public int Doctor_ID { get; set; }
+        public string Name_Title { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Department { get; set; }
-        public string ManagedBy { get; set; }
         public string Education { get; set; }
-        public string Name_Title { get; set; }
         public string Phone_Number { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
         public string Salary { get; set; }
         public System.DateTime JoiningDate { get; set; }
-        public byte[] ProfilePic { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Hospital_Management_Software.Controllers
         }
 
         // GET: Doctor/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult DetailsDoctor(int? id)
         {
             if(id == null)            
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -34,7 +34,8 @@ namespace Hospital_Management_Software.Controllers
 
         // POST: Doctor/Create
         [HttpPost]
-        public ActionResult AddDoctor(Doctor DoctorRecord)
+        [ValidateAntiForgeryToken]
+        public ActionResult AddDoctor([Bind(Include = "Doctor_ID,Name_Title,FirstName,LastName,Department, Education, Phone_Number, Email, Address, Salary, JoiningDate")]Doctor DoctorRecord)
         {
             try
             {
@@ -54,41 +55,62 @@ namespace Hospital_Management_Software.Controllers
         }
 
         // GET: Doctor/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditDoctor(int? id)
         {
-            return View();
+            if(id == null)            
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Doctor DoctorRecord = db.Doctors.Find(id);
+            if (DoctorRecord == null)
+                return HttpNotFound();
+            return View(DoctorRecord);
         }
 
         // POST: Doctor/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult EditDoctor([Bind(Include = "Doctor_ID,Name_Title,FirstName,LastName,Department, Education, Phone_Number, Email, Address, Salary, JoiningDate")] Doctor DoctorRecord)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if(ModelState.IsValid)
+                {
+                    db.Entry(DoctorRecord).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(DoctorRecord);
+                
             }
-            catch
+            catch(System.Exception ex)
             {
                 return View();
             }
         }
 
         // GET: Doctor/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteDoctor(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Doctor DoctorRecord = db.Doctors.Find(id);
+            if (DoctorRecord == null)
+                return HttpNotFound();
+            return View(DoctorRecord);
         }
 
         // POST: Doctor/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("DeleteDoctor")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int? id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                if (id == null)
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Doctor DoctorRecord = db.Doctors.Find(id);
+                db.Doctors.Remove(DoctorRecord);
+                db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
             catch

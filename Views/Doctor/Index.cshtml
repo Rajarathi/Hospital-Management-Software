@@ -8,13 +8,13 @@
 <h2>Doctors of Shakthi Hospitals</h2>
 
 <p  id="DisplayDetailsStyle">
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Doctor Details", "AddDoctor")
 </p>
 <table class="table">
     @foreach (var item in Model)
     {      
     <tr style="display: block;" id="DisplayDetailsStyle">
-        <td>@Html.DisplayFor(modelItem => item.ProfilePic)</td>
+        <td></td>
         <td>
             @Html.DisplayFor(modelItem => item.Name_Title) . @Html.DisplayFor(modelItem => item.FirstName)  @Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.Education) <br />
             @Html.DisplayFor(modelItem => item.Department) <br />
@@ -22,9 +22,9 @@
             @Html.DisplayFor(modelItem => item.Phone_Number)
         </td>        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Doctor_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Doctor_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Doctor_ID })
+            @Html.ActionLink("Edit", "EditDoctor", new { id = item.Doctor_ID }) |
+            @Html.ActionLink("Details", "DetailsDoctor", new { id = item.Doctor_ID }) |
+            @Html.ActionLink("Delete", "DeleteDoctor", new { id = item.Doctor_ID })
         </td>
     </tr>
     } 
