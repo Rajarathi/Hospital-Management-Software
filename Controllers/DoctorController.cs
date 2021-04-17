@@ -11,31 +11,52 @@ namespace Hospital_Management_Software.Controllers
         // GET: Doctor
         public ActionResult Index()
         {
-            return View(db.Doctors.ToList());
+            try
+            {
+                return View(db.Doctors.ToList());
+            }
+            catch
+            {
+                return RedirectToRoute("~/Shared/Error");
+            }
         }
 
         // GET: Doctor/Details/5
         public ActionResult DetailsDoctor(int? id)
         {
-            if(id == null)            
+            try
+            { 
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Doctor DoctorRecord = db.Doctors.Find(id);
             if (DoctorRecord == null)
                 return HttpNotFound();
 
             return View(DoctorRecord);
+            }
+            catch
+            {
+                return RedirectToRoute("~/Shared/Error");
+            }
         }
 
         // GET: Doctor/Create
         public ActionResult AddDoctor()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch
+            {
+                return RedirectToRoute("~/Shared/Error");
+            }
         }
 
         // POST: Doctor/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddDoctor([Bind(Include = "Doctor_ID,Name_Title,FirstName,LastName,Department, Education, Phone_Number, Email, Address, Salary, JoiningDate")]Doctor DoctorRecord)
+        public ActionResult AddDoctor([Bind(Include = "Doctor_ID,Name_Title,FirstName,LastName,Department, Education, Phone_Number, Email, Address, Salary, JoiningDate")] Doctor DoctorRecord)
         {
             try
             {
@@ -50,19 +71,25 @@ namespace Hospital_Management_Software.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToRoute("~/Shared/Error");
             }
         }
 
         // GET: Doctor/Edit/5
         public ActionResult EditDoctor(int? id)
         {
-            if(id == null)            
+            try { 
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Doctor DoctorRecord = db.Doctors.Find(id);
             if (DoctorRecord == null)
                 return HttpNotFound();
             return View(DoctorRecord);
+            }
+            catch
+            {
+                return RedirectToRoute("~/Shared/Error");
+            }
         }
 
         // POST: Doctor/Edit/5
@@ -72,30 +99,37 @@ namespace Hospital_Management_Software.Controllers
         {
             try
             {
-                if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     db.Entry(DoctorRecord).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 return View(DoctorRecord);
-                
+
             }
-            catch(System.Exception ex)
+            catch
             {
-                return View();
+                return RedirectToRoute("~/Shared/Error");
             }
         }
 
         // GET: Doctor/Delete/5
         public ActionResult DeleteDoctor(int? id)
         {
+            try
+            { 
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Doctor DoctorRecord = db.Doctors.Find(id);
             if (DoctorRecord == null)
                 return HttpNotFound();
             return View(DoctorRecord);
+            }
+            catch
+            {
+                return RedirectToRoute("~/Shared/Error");
+            }
         }
 
         // POST: Doctor/Delete/5
@@ -110,12 +144,12 @@ namespace Hospital_Management_Software.Controllers
                 Doctor DoctorRecord = db.Doctors.Find(id);
                 db.Doctors.Remove(DoctorRecord);
                 db.SaveChanges();
-                
+
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToRoute("~/Shared/Error");
             }
         }
     }
